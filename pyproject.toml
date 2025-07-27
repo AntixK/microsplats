@@ -1,0 +1,105 @@
+[project]
+name = "microspats"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = ["ruff>=0.12.5", "torch>=2.7.1"]
+
+[tool.ruff]
+exclude = [
+    ".git",
+    ".git-rewrite",
+    ".mypy_cache",
+    ".pytest_cache",
+    ".ruff_cache",
+    ".venv",
+    ".vscode",
+    "__pycache__",
+    "__pypackages__",
+]
+line-length = 100
+indent-width = 4
+target-version = "py312"
+
+[tool.ruff.lint]
+# https://docs.astral.sh/ruff/rules
+select = [
+    "F",     # pyflakes
+    "E",     # flake8
+    "W",     # warnings
+    "C90",   # complexity
+    "I",     # imports
+    "N",     # naming
+    "D",     # docstrings
+    "UP",    # untyped
+    "ANN",   # annotations
+    "ASYNC", # async
+    "S",     # style
+    "BLE",   # blank lines
+    "B",     # boolean
+    "A",     # assertions
+    "COM",   # comments
+    "C4",    # cyclomatic complexity
+    "DTZ",   # docstring too long
+    "T10",   # type annotations
+    "ISC",   # isort
+    "ICN",   # import conventions
+    "LOG",   # logging
+    "G",     # globals
+    "INP",   # inputs
+    "PIE",   # pie
+    "T20",   # type 20
+    "PT",    # performance
+    "Q",     # quality
+    "RSE",   # restructured
+    "RET",   # return
+    "SLF",   # self
+    "SLOT",  # slots
+    "SIM",   # simple
+    "TID",   # type id
+    "TCH",   # type check
+    "INT",   # introspection
+    "ARG",   # arguments
+    "PTH",   # paths
+    "ERA",   # errors
+    "PGH",   # performance
+    "PLC",   # plugins
+    "PLE",   # placeholders
+    "PLR",   # pull requests
+    "PLW",   # platform
+    "TRY",   # try
+    "FLY",   # fly
+    "PERF",  # performance
+    "RUF",   # ruff
+]
+ignore = ["W505", "D100", "D101", "D104", "ISC001", "COM812", "INP001"]
+fixable = ["ALL"]
+unfixable = []
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+# [tool.ruff.lint.mccabe]
+# max-complexity = 10
+
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["E402"]
+"**/{tests,docs,tools}/*" = ["S101", "S104", "S106"]
+
+[tool.ruff.lint.flake8-tidy-imports.banned-api]
+"typing.TypedDict".msg = "Use typing_extensions.TypedDict instead."
+
+[tool.ruff.lint.isort]
+force-single-line = true
+force-to-top = ["typing"]
+lines-after-imports = 2
+required-imports = ["from __future__ import annotations"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "auto"
+docstring-code-format = false
+docstring-code-line-length = "dynamic"
